@@ -1,3 +1,4 @@
+import json
 import os
 
 from flask import Flask, url_for, request, render_template
@@ -384,6 +385,13 @@ def news(title):
 @app.route('/training/<prof>')
 def training(prof):
     return render_template('index.html', prof=prof)
+
+
+@app.route('/member')
+def member():
+    with open("templates/astronauts.json", "rt", encoding="utf8") as f:
+        a_list = json.loads(f.read())
+    return render_template('index.html', a_list=a_list['astronauts'])
 
 
 if __name__ == '__main__':
