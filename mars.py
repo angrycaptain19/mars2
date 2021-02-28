@@ -394,5 +394,12 @@ def member():
     return render_template('index.html', a_list=a_list['astronauts'])
 
 
+@app.route('/auto_answer')
+def auto_answer():
+    param = {'title': 'Анкета', 'surname': 'Пупкин', 'name': 'Вася', 'education': 'ниже высшего',
+             'profession': 'пилот дронов', 'sex': 'male', 'motivation': 'Почему нет', 'ready': True}
+    return render_template('auto_answer.html', **param)
+
+
 if __name__ == '__main__':
     app.run(port=8000, host='127.0.0.1')
