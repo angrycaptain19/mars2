@@ -1,11 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% set item = a_list|random %}
-        <h2>{{item["name"]}}</h2>
-        <h2>{{item["surname"]}}</h2>
-        <div><img src={{item["photo"]}} class="d-block w-100" alt="no pic"></div>
-        <h3>
-            {{item["profs"]|sort|join(', ')}}
-        </h3>
+    <h1 class="color">Миссия Колонизация Марса</h1>
+    <h3>И на Марсе будут яблони цвести!</h3>
+    <h2></h2>
+    <h3>Аварийный доступ</h3>
+    <form action="" method="post" novalidate>
+        <div>
+            {{ form.csrf_token }}
+        </div>
+        {% for field in form if field.name != 'csrf_token' %}
+            <div>
+                {{ field.label() }}
+                {{ field() }}
+                {% for error in field.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </form>
 {% endblock %}
