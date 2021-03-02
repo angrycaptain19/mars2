@@ -27,10 +27,7 @@ def index3():
                  'Мы сделаем обитаемыми безжизненные пока планеты.',
                  'И начнем с Марса!',
                  'Присоединяйся!']
-    txt = ''
-    for i in text_list:
-        txt += f'<p>{i}</p>'
-    return txt
+    return ''.join(f'<p>{i}</p>' for i in text_list)
 
 
 @app.route('/image_mars')
@@ -148,14 +145,16 @@ def selection():
                  'инженер по терраформированию', 'климатолог', 'специалист по радиационной защите',
                  'астрогеолог', 'гляциолог', 'инженер жизнеобеспечения', 'метеоролог',
                  'оператор марсохода', 'киберинженер', 'штурман', 'пилот дронов']
-        prof_form = ''
-        for i in profs:
-            prof_form += f'''<div class="form-check">
+        prof_form = ''.join(
+            f'''<div class="form-check">
                 <input class="form-check-input" type="checkBox" name="prof" id="{i}" value="{i}">
                 <label class="form-check-label" for="{i}">
                   {i}
                 </label>
                 </div>'''
+            for i in profs
+        )
+
         return f'''<!doctype html>
                         <html lang="en">
                           <head>
